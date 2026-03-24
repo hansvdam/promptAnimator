@@ -41,6 +41,9 @@ export function buildSteps(config) {
         case 'tool_result':
           steps.push({ type: 'tool-result', content: msg.content, tool_name: msg.tool_name || null });
           break;
+        case 'annotation':
+          steps.push({ type: 'annotation', content: msg.content });
+          break;
       }
     }
   }

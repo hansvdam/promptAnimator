@@ -16,11 +16,11 @@ export default {
   messages: [
     {
       role: "user",
-      content: "/commit"
+      content: "save to repo"
     },
     {
       role: "tool_result",
-      content: "Skill loaded: /commit\n\nSteps:\n1. Run git diff to see changes\n2. Generate a commit message\n3. Stage and commit",
+      content: "Skill loaded: /commit\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
       tool_name: "skill_registry"
     },
     {
@@ -38,11 +38,20 @@ export default {
     },
     {
       role: "assistant",
-      content: "Committed: \"Fix auth token refresh and add login retry logic\"",
+      content: "I see changes in auth and login. Let me stage and commit these.",
       tool_call: {
         name: "run_shell",
         arguments: { command: "git add -A && git commit -m 'Fix auth token refresh and add login retry logic'" }
       }
+    },
+    {
+      role: "tool_result",
+      content: "[main a3f7c2d] Fix auth token refresh and add login retry logic\n 2 files changed, 15 insertions(+), 5 deletions(-)",
+      tool_name: "run_shell"
+    },
+    {
+      role: "assistant",
+      content: "Done! Committed 2 files with message: \"Fix auth token refresh and add login retry logic\"."
     }
   ]
 };

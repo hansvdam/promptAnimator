@@ -32,6 +32,10 @@ export default {
       }
     },
     {
+      role: "annotation",
+      content: "Agent calls the weather API, and wraps the response as a tool_result for the LLM."
+    },
+    {
       role: "tool_result",
       content: '{\n  "temperature": 14,\n  "condition": "Partly cloudy",\n  "humidity": 72,\n  "wind": "18 km/h NW"\n}',
       tool_name: "get_weather"

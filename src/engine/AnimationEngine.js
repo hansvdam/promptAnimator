@@ -147,6 +147,10 @@ export class AnimationEngine {
       case 'tool-result':
         await this.chatPanel.showToolResult(step.content, step.tool_name, speed, signal);
         break;
+
+      case 'annotation':
+        await this.chatPanel.showAnnotation(step.content, speed, signal);
+        break;
     }
   }
 

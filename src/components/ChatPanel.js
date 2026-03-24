@@ -1,6 +1,7 @@
 import { el } from '../utils/dom.js';
 import { createChatBubble } from './ChatBubble.js';
 import { createToolResultCard } from './ToolResultCard.js';
+import { createAnnotationCard } from './AnnotationCard.js';
 import { createTypingIndicator } from './TypingIndicator.js';
 import { InputBar } from './InputBar.js';
 import { delay, isAbortError } from '../engine/Timing.js';
@@ -56,6 +57,17 @@ export class ChatPanel {
       requestAnimationFrame(() => bubble.classList.add('chat-bubble--visible'));
     });
     await delay(400, speed, signal);
+  }
+
+  async showAnnotation(content, speed = 1, signal) {
+    const card = createAnnotationCard(content);
+    this.messagesEl.appendChild(card);
+    this.scrollToBottom();
+
+    requestAnimationFrame(() => {
+      requestAnimationFrame(() => card.classList.add('annotation-card--visible'));
+    });
+    await delay(600, speed, signal);
   }
 
   async showToolResult(content, toolName, speed = 1, signal) {

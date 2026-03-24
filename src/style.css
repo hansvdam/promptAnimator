@@ -365,6 +365,43 @@ html, body {
   word-break: break-word;
 }
 
+/* === Annotation Card === */
+.annotation-card {
+  max-width: 85%;
+  background: rgba(188, 140, 255, 0.06);
+  border: 1px dashed rgba(188, 140, 255, 0.3);
+  border-left: 3px solid var(--accent-purple);
+  border-radius: var(--radius);
+  padding: 12px 18px;
+  align-self: center;
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity var(--transition-normal), transform var(--transition-normal);
+}
+.annotation-card--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.annotation-card__badge {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  color: var(--accent-purple);
+  background: rgba(188, 140, 255, 0.1);
+  padding: 2px 8px;
+  border-radius: 4px;
+  display: inline-block;
+  margin-bottom: 6px;
+}
+
+.annotation-card__content {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}
+
 /* === Typing Indicator === */
 .typing-indicator {
   display: flex;
