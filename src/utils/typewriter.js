@@ -1,7 +1,7 @@
 export function typewriter(textEl, text, speed = 1, signal) {
   return new Promise((resolve, reject) => {
     let i = 0;
-    const baseDelay = 35;
+    const baseDelay = 70;
 
     function tick() {
       if (signal?.aborted) {
