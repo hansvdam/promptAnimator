@@ -1,9 +1,9 @@
 export default {
   title: 'Full Flow',
   system_prompt: {
-    instructions: "You are a project management assistant.\nUse tools and MCP servers to help manage tasks.\nBe proactive and concise.",
-    long_term_memory: "User: Alex Chen, Tech Lead\nPrefers brief updates\nTimezone: CET",
-    skill_registry: '/standup - Generate daily standup summary\n/deploy - Trigger deployment pipeline'
+    instructions: "You are a project management assistant.\nUse tools and MCP servers to manage tasks.\nBe concise.",
+    long_term_memory: "User: Alex Chen, Tech Lead\nTimezone: CET",
+    skill_registry: '/standup - Daily standup summary\n/deploy - Trigger deployment'
   },
   tools: [
     {
@@ -20,12 +20,12 @@ export default {
   mcp_servers: [
     {
       name: "jira-server",
-      description: "Connect to Jira for ticket management",
+      description: "Jira ticket management",
       tools: ["get_sprint", "update_ticket", "create_ticket"]
     },
     {
       name: "github-server",
-      description: "Connect to GitHub for PR and repo info",
+      description: "GitHub PR and repo info",
       tools: ["list_prs", "get_pr_status", "merge_pr"]
     }
   ],
@@ -36,12 +36,12 @@ export default {
     },
     {
       role: "tool_result",
-      content: "Skill loaded: /standup\n\nGather yesterday's activity, open PRs, and sprint status, then summarize.",
+      content: "Skill loaded: /standup\n\nGather yesterday's activity, open PRs, sprint status.",
       tool_name: "skill_registry"
     },
     {
       role: "assistant",
-      content: "Pulling your standup data from multiple sources.",
+      content: "Pulling standup data.",
       tool_call: {
         name: "query_db",
         arguments: { sql: "SELECT * FROM commits WHERE author='alex' AND date=CURRENT_DATE-1" }
@@ -49,33 +49,33 @@ export default {
     },
     {
       role: "tool_result",
-      content: '3 commits yesterday:\n- "Refactor auth middleware" (09:14)\n- "Add rate limiting tests" (14:22)\n- "Fix CI pipeline timeout" (16:45)',
+      content: '3 commits:\n- "Refactor auth middleware" (09:14)\n- "Add rate limit tests" (14:22)\n- "Fix CI timeout" (16:45)',
       tool_name: "query_db"
     },
     {
       role: "assistant",
-      content: "Here's your standup summary:\n\nYesterday: Refactored auth middleware, added rate limiting tests, fixed CI timeout.\nToday: 2 open PRs awaiting review, sprint at 73% completion.\nBlockers: None identified."
+      content: "Yesterday: Auth refactor, rate limit tests, CI fix.\nToday: 2 PRs awaiting review, sprint 73%.\nBlockers: None."
     },
     {
       role: "user",
-      content: "Notify the team on #engineering"
+      content: "Notify #engineering"
     },
     {
       role: "assistant",
-      content: "Sending the summary to Slack.",
+      content: "Sending to Slack.",
       tool_call: {
         name: "send_notification",
-        arguments: { channel: "#engineering", message: "Standup - Alex: Refactored auth, added rate limit tests, fixed CI. 2 PRs open, sprint at 73%." }
+        arguments: { channel: "#engineering", message: "Standup - Alex: Auth refactor, rate limit tests, CI fix. 2 PRs open, sprint 73%." }
       }
     },
     {
       role: "tool_result",
-      content: "Message sent to #engineering successfully.",
+      content: "Sent to #engineering.",
       tool_name: "send_notification"
     },
     {
       role: "assistant",
-      content: "Done! Standup summary posted to #engineering."
+      content: "Posted to #engineering."
     }
   ]
 };

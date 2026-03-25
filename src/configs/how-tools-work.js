@@ -1,8 +1,8 @@
 export default {
   title: 'How Tools Work',
   system_prompt: {
-    instructions: "You are a helpful assistant.\nYou can use tools to get real-time information.\nAlways be concise and cite your sources.",
-    long_term_memory: "User prefers Celsius for temperature.\nUser is located in Amsterdam.",
+    instructions: "You are a helpful assistant.\nUse tools for real-time information.\nBe concise.",
+    long_term_memory: "Prefers Celsius. Located in Amsterdam.",
     skill_registry: null
   },
   tools: [
@@ -21,11 +21,11 @@ export default {
   messages: [
     {
       role: "user",
-      content: "What's the weather like in Amsterdam right now?"
+      content: "What's the weather in Amsterdam?"
     },
     {
       role: "assistant",
-      content: "Let me check the current weather for you.",
+      content: "Let me check that.",
       tool_call: {
         name: "get_weather",
         arguments: { location: "Amsterdam", unit: "celsius" }
@@ -33,7 +33,7 @@ export default {
     },
     {
       role: "annotation",
-      content: "Agent calls the weather API, and wraps the response as a tool_result for the LLM."
+      content: "Agent calls weather API, wraps response as tool_result for the LLM."
     },
     {
       role: "tool_result",
@@ -42,7 +42,7 @@ export default {
     },
     {
       role: "assistant",
-      content: "It's currently 14\u00B0C and partly cloudy in Amsterdam, with 72% humidity and northwest winds at 18 km/h."
+      content: "14\u00B0C, partly cloudy. Humidity 72%, wind 18 km/h NW."
     }
   ]
 };
