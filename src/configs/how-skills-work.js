@@ -1,7 +1,7 @@
 export default {
   title: 'How Skills Work',
   system_prompt: {
-    instructions: "You are a coding assistant.\nWhen users invoke a slash command, consult the skill registry and execute the matching skill.",
+    instructions: "You are a coding assistant.\nWhen a user request matches a registered skill, use it.",
     long_term_memory: null,
     skill_registry: '/commit - Stage and commit changes with a message\n/review - Review PR and suggest improvements\n/test - Run test suite and report results'
   },
