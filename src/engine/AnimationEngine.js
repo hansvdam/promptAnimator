@@ -129,7 +129,7 @@ export class AnimationEngine {
 
     switch (step.type) {
       case 'show-context-card':
-        await this.contextPanel.addCard(step.cardType, step.title, step.content);
+        await this.contextPanel.addCard(step.cardType, step.title, step.content, 0, step.highlights);
         break;
 
       case 'pause-beat':
@@ -141,15 +141,15 @@ export class AnimationEngine {
         break;
 
       case 'assistant-message':
-        await this.chatPanel.showAssistantMessage(step.content, step.tool_call, speed, signal);
+        await this.chatPanel.showAssistantMessage(step.content, step.tool_call, speed, signal, step.highlights);
         break;
 
       case 'tool-result':
-        await this.chatPanel.showToolResult(step.content, step.tool_name, speed, signal);
+        await this.chatPanel.showToolResult(step.content, step.tool_name, speed, signal, step.highlights);
         break;
 
       case 'annotation':
-        await this.chatPanel.showAnnotation(step.content, speed, signal);
+        await this.chatPanel.showAnnotation(step.content, speed, signal, step.tag);
         break;
     }
   }

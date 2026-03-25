@@ -1,6 +1,11 @@
 import { el } from '../utils/dom.js';
+import { applyHighlights } from '../utils/highlight.js';
 
-export function createContextCard(type, title, content) {
+export function createContextCard(type, title, content, highlights) {
+  const contentEl = el('div', { className: 'context-card__content' });
+  const formatted = formatContent(content);
+  contentEl.appendChild(applyHighlights(formatted, highlights));
+
   const card = el('div', { className: `context-card context-card--${type}` },
     el('div', { className: 'context-card__header', onClick: () => card.classList.toggle('context-card--collapsed') },
       el('span', { className: 'context-card__dot' }),
@@ -8,7 +13,7 @@ export function createContextCard(type, title, content) {
       el('span', { className: 'context-card__toggle' }, '\u25BC')
     ),
     el('div', { className: 'context-card__body' },
-      el('div', { className: 'context-card__content' }, formatContent(content))
+      contentEl
     )
   );
   return card;

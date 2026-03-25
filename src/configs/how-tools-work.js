@@ -1,5 +1,11 @@
 export default {
   title: 'How Tools Work',
+  highlights: [
+    { text: "get_weather", color: 1 },
+    { text: "search_web", color: 2 },
+    { text: "New York", color: 3 },
+    { text: "celsius", color: 4 },
+  ],
   system_prompt: {
     instructions: "You are a helpful assistant.\nUse tools for real-time information.\nBe concise.",
     long_term_memory: "Prefers Celsius. Located in Amsterdam.",
@@ -21,19 +27,20 @@ export default {
   messages: [
     {
       role: "user",
-      content: "What's the weather in Amsterdam?"
+      content: "What's the weather in New York?"
     },
     {
       role: "assistant",
       content: "Let me check that.",
       tool_call: {
         name: "get_weather",
-        arguments: { location: "Amsterdam", unit: "celsius" }
+        arguments: { location: "New York", unit: "celsius" }
       }
     },
     {
       role: "annotation",
-      content: "Agent calls weather API, wraps response as tool_result for the LLM."
+      tag: "what happens",
+      content: "Agent calls weather API with 'New York' and 'celcius', wraps response as tool_result for the LLM."
     },
     {
       role: "tool_result",

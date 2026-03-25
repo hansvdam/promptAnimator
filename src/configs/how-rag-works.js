@@ -1,5 +1,11 @@
 export default {
   title: 'How RAG Works',
+  highlights: [
+    { text: "vector_search", color: 1 },
+    { text: "vacation days", color: 2 },
+    { text: "PTO-Policy-2024.pdf", color: 3 },
+    { text: "Eng-Handbook.pdf", color: 4 },
+  ],
   system_prompt: {
     instructions: "You are an HR assistant for Acme Corp.\nAnswer using retrieved company documents.\nCite sources.",
     long_term_memory: "Employee: Jane Smith, Engineering dept.",

@@ -40,7 +40,7 @@ export class ChatPanel {
     await delay(400, speed, signal);
   }
 
-  async showAssistantMessage(text, toolCall, speed = 1, signal) {
+  async showAssistantMessage(text, toolCall, speed = 1, signal, highlights = null) {
     // Show typing indicator
     const indicator = createTypingIndicator();
     this.messagesEl.appendChild(indicator);
@@ -49,7 +49,7 @@ export class ChatPanel {
 
     // Replace with bubble
     indicator.remove();
-    const bubble = createChatBubble('assistant', text, toolCall);
+    const bubble = createChatBubble('assistant', text, toolCall, highlights);
     this.messagesEl.appendChild(bubble);
     this.scrollToBottom();
 
@@ -59,8 +59,8 @@ export class ChatPanel {
     await delay(400, speed, signal);
   }
 
-  async showAnnotation(content, speed = 1, signal) {
-    const card = createAnnotationCard(content);
+  async showAnnotation(content, speed = 1, signal, tag) {
+    const card = createAnnotationCard(content, tag);
     this.messagesEl.appendChild(card);
     this.scrollToBottom();
 
@@ -70,8 +70,8 @@ export class ChatPanel {
     await delay(600, speed, signal);
   }
 
-  async showToolResult(content, toolName, speed = 1, signal) {
-    const card = createToolResultCard(content, toolName);
+  async showToolResult(content, toolName, speed = 1, signal, highlights = null) {
+    const card = createToolResultCard(content, toolName, highlights);
     this.messagesEl.appendChild(card);
     this.scrollToBottom();
 

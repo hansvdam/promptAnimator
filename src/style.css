@@ -503,3 +503,16 @@ html, body {
   font-size: 32px;
   opacity: 0.5;
 }
+
+/* === Highlights === */
+.highlight {
+  padding: 1px 4px;
+  border-radius: 3px;
+  font-weight: 600;
+}
+.highlight--1 { color: #f0a500; background: rgba(240, 165, 0, 0.15); }
+.highlight--2 { color: #58a6ff; background: rgba(88, 166, 255, 0.15); }
+.highlight--3 { color: #3fb950; background: rgba(63, 185, 80, 0.15); }
+.highlight--4 { color: #f85149; background: rgba(248, 81, 73, 0.15); }
+.highlight--5 { color: #bc8cff; background: rgba(188, 140, 255, 0.15); }
+.highlight--6 { color: #39d2c0; background: rgba(57, 210, 192, 0.15); }

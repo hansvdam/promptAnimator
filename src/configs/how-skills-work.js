@@ -1,5 +1,12 @@
 export default {
   title: 'How Skills Work',
+  highlights: [
+    { text: "run_shell", color: 1 },
+    { text: "/commit", color: 2 },
+    { text: "git diff --stat", color: 3 },
+    { text: "git add -A", color: 4 },
+    { text: "git commit -m", color: 5 },
+  ],
   system_prompt: {
     instructions: "You are a coding assistant.\nUse registered skills when they match the request.",
     long_term_memory: null,
@@ -20,7 +27,7 @@ export default {
     },
     {
       role: "tool_result",
-      content: "Skill loaded: /commit\n\n1. Run `git diff --stat`\n2. Generate commit message\n3. Stage and commit",
+      content: "Skill loaded: /commit\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
       tool_name: "skill_registry"
     },
     {

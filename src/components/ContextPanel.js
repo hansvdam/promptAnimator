@@ -12,8 +12,8 @@ export class ContextPanel {
     this.cards = [];
   }
 
-  addCard(type, title, content, delayMs = 0) {
-    const card = createContextCard(type, title, content);
+  addCard(type, title, content, delayMs = 0, highlights = null) {
+    const card = createContextCard(type, title, content, highlights);
     this.el.appendChild(card);
     this.cards.push(card);
 
