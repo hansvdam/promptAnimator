@@ -28,8 +28,13 @@ export class App {
       }
     };
 
+    const contextColumn = el('div', { className: 'context-column' },
+      el('h2', { className: 'column-heading' }, 'Fixed system part'),
+      this.contextPanel.el
+    );
+
     const layout = el('div', { className: 'main-layout' },
-      this.contextPanel.el,
+      contextColumn,
       this.chatPanel.el
     );
 
