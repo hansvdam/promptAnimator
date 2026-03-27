@@ -27,7 +27,7 @@ export default {
     },
     {
       role: "tool_result",
-      content: "Skill loaded: /commit\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
+      content: "Skill loaded: /commit (from its Skill.md):\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
       tool_name: "skill_registry"
     },
     {
