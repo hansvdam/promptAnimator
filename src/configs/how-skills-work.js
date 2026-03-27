@@ -6,17 +6,24 @@ export default {
     { text: "git diff --stat", color: 3 },
     { text: "git add -A", color: 4 },
     { text: "git commit -m", color: 5 },
+    { text: "read", color: 6 },
+    { text: "SKILL.md", color: 2 },
   ],
   system_prompt: {
     instructions: "You are a coding assistant.\nUse registered skills when they match the request.",
     long_term_memory: null,
-    skill_registry: '/commit - Stage and commit changes\n/review - Review PR\n/test - Run test suite'
+    skill_registry: '/commit - Stage and commit changes\n/review - Review PR\n/test - Run test suite\n\nWhen a skill matches, use read to load its SKILL.md for instructions.'
   },
   tools: [
     {
       name: "run_shell",
       description: "Execute a shell command",
       parameters: { command: "string" }
+    },
+    {
+      name: "read",
+      description: "Read a file from the filesystem",
+      parameters: { file_path: "string" }
     }
   ],
   mcp_servers: null,
@@ -26,9 +33,17 @@ export default {
       content: "save to repo"
     },
     {
+      role: "assistant",
+      content: "Looks like a /commit skill match. Loading its instructions.",
+      tool_call: {
+        name: "read",
+        arguments: { file_path: "/skills/commit/SKILL.md" }
+      }
+    },
+    {
       role: "tool_result",
-      content: "Skill loaded: /commit (from its Skill.md):\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
-      tool_name: "skill_registry"
+      content: "# /commit\n\nSteps:\n1. Run `git diff --stat` to see changed files\n2. Generate a descriptive commit message from the diff\n3. Stage all changes with `git add -A`\n4. Commit with `git commit -m '<message>'`",
+      tool_name: "read"
     },
     {
       role: "assistant",
