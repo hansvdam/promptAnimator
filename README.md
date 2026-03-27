@@ -2,7 +2,7 @@
 
 An interactive browser-based tool that visualizes how LLM (Large Language Model) interactions work through staged animations. It demonstrates concepts like tool calling, RAG (Retrieval-Augmented Generation), skills, and full agent flows by animating the back-and-forth between a user, an assistant, and external tools.
 
-https://github.com/user-attachments/assets/38a16d88-6c80-4eb3-8eff-b12bd368f636
+https://github.com/user-attachments/assets/50871753-7d5f-4de7-8fa8-3a6892db20d3
 
 ## Features
 
