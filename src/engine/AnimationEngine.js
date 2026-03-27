@@ -9,7 +9,7 @@ export class AnimationEngine {
     this.currentIndex = 0;
     this.state = 'idle'; // idle | playing | paused | finished
     this.speed = 1;
-    this.manual = false;
+    this.manual = true;
     this.abortController = null;
     this.onStateChange = null;
     this._stepResolve = null; // for manual mode

@@ -31,7 +31,7 @@ export default {
     },
     {
       role: "assistant",
-      content: "Let me check that.",
+      // content: "Let me check that.",
       tool_call: {
         name: "get_weather",
         arguments: { location: "New York", unit: "celsius" }

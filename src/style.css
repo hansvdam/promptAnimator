@@ -137,12 +137,18 @@ html, body {
 .column-heading {
   font-size: 13px;
   font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 1.2px;
+  letter-spacing: 0.5px;
   color: var(--text-muted);
-  padding: 12px 16px;
+  padding: 6px 16px;
   margin: 0;
   border-bottom: 1px solid var(--border);
+}
+
+/* === Chat Column (Right) === */
+.chat-column {
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
 }
 
 /* === Context Panel (Left) === */
@@ -246,6 +252,7 @@ html, body {
 .chat-panel {
   display: flex;
   flex-direction: column;
+  flex: 1;
   background: var(--bg-primary);
   overflow: hidden;
 }

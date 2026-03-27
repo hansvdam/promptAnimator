@@ -33,9 +33,14 @@ export class App {
       this.contextPanel.el
     );
 
+    const chatColumn = el('div', { className: 'chat-column' },
+      el('h2', { className: 'column-heading' }, 'Interaction history part'),
+      this.chatPanel.el
+    );
+
     const layout = el('div', { className: 'main-layout' },
       contextColumn,
-      this.chatPanel.el
+      chatColumn
     );
 
     this.root.appendChild(this.toolbar.el);

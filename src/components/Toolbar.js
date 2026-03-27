@@ -2,7 +2,7 @@ import { el } from '../utils/dom.js';
 
 export class Toolbar {
   constructor({ configs, onConfigChange, onPlay, onPause, onReset, onSpeedChange, onModeToggle }) {
-    this.state = { playing: false, speed: 1, manual: false };
+    this.state = { playing: false, speed: 1, manual: true };
     this.callbacks = { onConfigChange, onPlay, onPause, onReset, onSpeedChange, onModeToggle };
 
     // Config selector
@@ -29,7 +29,7 @@ export class Toolbar {
     this.resetBtn = el('button', { className: 'toolbar__btn toolbar__btn--reset', onClick: () => onReset() }, '\u21BB Reset');
 
     // Mode toggle
-    this.modeBtn = el('button', { className: 'toolbar__btn', onClick: () => this.toggleMode() }, 'Auto');
+    this.modeBtn = el('button', { className: 'toolbar__btn toolbar__btn--active', onClick: () => this.toggleMode() }, 'Manual');
 
     this.el = el('div', { className: 'toolbar' },
       el('span', { className: 'toolbar__title' }, 'Prompt Animator'),
