@@ -1,8 +1,8 @@
 const CACHE_NAME = 'prompt-animator-v1';
 const PRECACHE_URLS = [
-  './',
-  './favicon.svg',
-  './icons.svg',
+  '/promptAnimator/',
+  '/promptAnimator/favicon.svg',
+  '/promptAnimator/icons.svg',
 ];
 
 self.addEventListener('install', (event) => {
@@ -25,7 +25,7 @@ self.addEventListener('fetch', (event) => {
   // Network-first for navigation, cache-first for assets
   if (event.request.mode === 'navigate') {
     event.respondWith(
-      fetch(event.request).catch(() => caches.match('./'))
+      fetch(event.request).catch(() => caches.match('/promptAnimator/'))
     );
     return;
   }
